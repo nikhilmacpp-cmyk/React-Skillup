@@ -14,7 +14,6 @@ useEffect(()=>{
     Dispatch(fetchUser())
 },[])
 console.log('user',user)
-
 return loading ? <h5>Loading....</h5>:
         error ? <h5>{error}</h5> :
         <div>
