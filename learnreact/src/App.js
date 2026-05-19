@@ -3,6 +3,7 @@ import Counter from './component/Counter';
 import Theme from "./component/Theme"
 import Users from "./component/Users"
 import Posts from "./component/Post"
+import RTKUsers from "./component/RTKUsers"
 const App = () =>{
    
     return (
@@ -14,6 +15,8 @@ const App = () =>{
         <Users/>
         <span>----------------------</span>
         <Posts/>
+        <span>----------------------</span>
+        <RTKUsers/>
         <span>----------------------</span>
         </>
     )
