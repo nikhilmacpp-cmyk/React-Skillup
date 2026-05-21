@@ -1,40 +1,59 @@
-import {useGetUsersQuery} from '../features/api/apiSlice';
+import { useState } from 'react'
+import { useGetUsersQuery, useAddPostMutation } from '../features/api/apiSlice';
 
-const RTKUsers = () =>{
-    const {
-        data,
-        error,
-        isLoading
-    } = useGetUsersQuery();
-    if (isLoading) {
+const RTKUsers = () => {
+  const [title, setTitle] = useState("")
 
-    return <h1>Loading...</h1>
+  const [
 
+    addPost,
+
+    {
+      isLoading,
+      isSuccess,
+      error,
+      data
+    }
+
+  ] = useAddPostMutation();
+
+  const submitHandler = async() => {
+  try {
+    const data = {
+      title,
+      body: "Learning RTK Query"
+    }
+    await addPost(data)
+  } catch (err) {
+    console.log('error while post', err)
   }
-  if (error) {
+}
 
-    return <h1>Error...</h1>
+if (isLoading) {
 
-  }
-  return (
+  return <h1>Loading...</h1>
 
-    <div>
+}
+if (error) {
 
-      <h1>RTK Query Users</h1>
+  return <h1>Error...</h1>
 
-      {
-        data.map((user) => (
+}
+console.log('data',data)
+return (
+  <div>
+    <h1>RTK Query Users</h1>
+    <input type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
+    <button onClick={submitHandler}>ADD POST</button>
+    {
+     data && (
+          <h2>{data.title}</h2>
+        )
+    }
 
-          <h3 key={user.id}>
-            {user.name}
-          </h3>
+  </div>
 
-        ))
-      }
-
-    </div>
-
-  )
+)
 }
 
 export default RTKUsers

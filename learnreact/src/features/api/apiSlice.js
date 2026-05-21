@@ -8,10 +8,19 @@ export const apiSlice = createApi({
     endpoints:(builder)=>({
         getUsers:builder.query({
             query:()=>"/users"
+        }),
+
+        addPost:builder.mutation({
+        query:(newpost)=>({
+            url:'/posts',
+            method:'POST',
+            body:newpost
         })
+    })
     })
 })
 
 export const {
-  useGetUsersQuery
+  useGetUsersQuery,
+  useAddPostMutation
 } = apiSlice
