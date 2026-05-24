@@ -16,6 +16,19 @@ const RTKUsers = () => {
     }
 
   ] = useAddPostMutation();
+  const {
+   isLoading: getIsLoading,
+   isSuccess: getIsSuccess,
+   error: getError,
+   data: getData
+} = useGetUsersQuery(
+  undefined,
+  {
+    refetchOnMountOrArgChange:true,
+    refetchOnFocus:true,
+    refetchOnReconnect:true,
+  }
+);
 
   const submitHandler = async() => {
   try {
@@ -45,11 +58,11 @@ return (
     <h1>RTK Query Users</h1>
     <input type="text" placeholder="Enter title" value={title} onChange={(e) => setTitle(e.target.value)} />
     <button onClick={submitHandler}>ADD POST</button>
-    {
-     data && (
-          <h2>{data.title}</h2>
-        )
-    }
+     <div>
+            {
+                getData?.map((item,id)=><div key={id}>{item.name}</div>)
+            }
+        </div>
 
   </div>
 
