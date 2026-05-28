@@ -2,9 +2,11 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useLoginUserMutation } from './authApi';
 import { setCredentials, logout } from './authSlice';
+import {useNavigate} from 'react-router-dom'
 
 const Login = () => {
     const dispatch = useDispatch();
+    const navigate = useNavigate()
     const {
         user,
         isAuthenticated
@@ -33,6 +35,7 @@ const Login = () => {
                 token:
                     "fake-jwt-token"
             }))
+            navigate("/dashboard")
         } catch (err) {
             console.log('Error Occured', err)
         }
