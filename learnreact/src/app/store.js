@@ -5,6 +5,8 @@ import usersReducer from "../features/users/userSlice"
 import postSlice from "../features/posts/postsSlice"
 import {apiSlice} from '../features/api/apiSlice'
 import { setupListeners } from "@reduxjs/toolkit/query"
+import authReducer from "../features/auth/authSlice"
+
 export const store = configureStore({
     reducer:{
         counter : counterSlice,
@@ -12,6 +14,7 @@ export const store = configureStore({
         users:usersReducer,
         posts:postSlice,
         [apiSlice.reducerPath]:apiSlice.reducer,
+        auth: authReducer
     },
     middleware:
     (getDefaultMiddleware)=>

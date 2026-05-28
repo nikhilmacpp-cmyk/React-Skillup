@@ -1,31 +1,19 @@
-import { createSlice } from '@reduxjs/toolkit';
+import {apiSlice} from "../api/apiSlice";
 
-const initialState = {
-    user: null,
-    token: null,
-    isAuthenticated: false
-};
-
-const authApiSlice = createSlice({
-    name: 'auth',
-    initialState,
-    reducers: {
-        setCredentials: (state, action) => {
-            state.user = action.payload.user
-            state.token = action.payload.token
-            state.isAuthenticated = true
-        },
-        logout:(state,action)=>{
-            state.user = null,
-            state.token=null,
-            state.isAuthenticated=false
-        }
-    }
+export const authApi = 
+apiSlice.injectEndpoints({
+    endpoints:(builder)=>({
+        loginUser:
+            builder.mutation({
+                query:(credentials)=>({
+                    url:"/posts",
+                    method:"POST",
+                    body:credentials
+                })
+            })
+    })
 })
 
 export const {
-    setCredentials,
-    logout
-} = authApiSlice.actions;
-
-export default authSlice.reducer
+    useLoginUserMutation
+} = authApi
