@@ -6,12 +6,10 @@ import {
 import {
   toggleTheme
 } from "../features/theme/themeSlice"
-
+import useToggle from '../hooks/useTheme'
 const Theme = () => {
 
-  const mode = useSelector(
-    (state) => state.theme.mode
-  )
+  const mode = useToggle()
 
   const dispatch = useDispatch()
   return (

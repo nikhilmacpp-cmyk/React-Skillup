@@ -12,23 +12,7 @@ import Dashboard from './pages/Dashboard'
 import ProtectedRoute from './component/ProtectedRoute';
 const App = () => {
 
-    // return (
-    //     <>
-    //     <Counter/>
-    //     <span>----------------------</span>
-    //     <Theme/>
-    //     <span>----------------------</span>
-    //     <Users/>
-    //     <span>----------------------</span>
-    //     <Posts/>
-    //     <span>----------------------</span>
-    //     <RTKUsers/>
-    //     <span>----------------------</span>
-    //     <Login/>
-    //     </>
-    // )
-
-    return (
+    return (<>
         <BrowserRouter>
             <Login />
             <Routes>
@@ -53,6 +37,18 @@ const App = () => {
                 />
             </Routes>
         </BrowserRouter>
+        <span>----------------------</span>
+        <Counter />
+        <span>----------------------</span>
+        <Theme />
+        <span>----------------------</span>
+        <Users />
+        <span>----------------------</span>
+        <Posts />
+        <span>----------------------</span>
+        <RTKUsers />
+        <span>----------------------</span>
+    </>
     )
 }
 export default App
