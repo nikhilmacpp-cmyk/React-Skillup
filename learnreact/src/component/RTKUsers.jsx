@@ -52,7 +52,7 @@ if (error) {
   return <h1>Error...</h1>
 
 }
-console.log('data',data)
+
 return (
   <div>
     <h1>RTK Query Users</h1>

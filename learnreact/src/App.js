@@ -12,47 +12,47 @@ import Dashboard from './pages/Dashboard'
 import ProtectedRoute from './component/ProtectedRoute';
 const App = () => {
 
-    return (
-        <>
-        {/* <Counter/>
-        <span>----------------------</span>
-        <Theme/> */}
-        <span>----------------------</span>
-        <Users/>
-        <span>----------------------</span>
-        {/* <Posts/>
-        <span>----------------------</span>
-        <RTKUsers/>
-        <span>----------------------</span>
-        <Login/> */}
-        </>
-    )
-
     // return (
-    //     <BrowserRouter>
-    //         <Login />
-    //         <Routes>
-    //             <Route
-    //                 path="/"
-    //                 element={<Home />}
-    //             />
-    //             <Route
-
-    //                 path="/dashboard"
-
-    //                 element={
-
-    //                     <ProtectedRoute>
-
-    //                         <Dashboard />
-
-    //                     </ProtectedRoute>
-
-    //                 }
-
-    //             />
-    //         </Routes>
-    //     </BrowserRouter>
+    //     <>
+    //     <Counter/>
+    //     <span>----------------------</span>
+    //     <Theme/>
+    //     <span>----------------------</span>
+    //     <Users/>
+    //     <span>----------------------</span>
+    //     <Posts/>
+    //     <span>----------------------</span>
+    //     <RTKUsers/>
+    //     <span>----------------------</span>
+    //     <Login/>
+    //     </>
     // )
+
+    return (
+        <BrowserRouter>
+            <Login />
+            <Routes>
+                <Route
+                    path="/"
+                    element={<Home />}
+                />
+                <Route
+
+                    path="/dashboard"
+
+                    element={
+
+                        <ProtectedRoute>
+
+                            <Dashboard />
+
+                        </ProtectedRoute>
+
+                    }
+
+                />
+            </Routes>
+        </BrowserRouter>
+    )
 }
 export default App

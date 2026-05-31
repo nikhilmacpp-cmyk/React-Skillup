@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useLoginUserMutation } from './authApi';
 import { setCredentials, logout } from './authSlice';
 import {useNavigate} from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 
 const Login = () => {
     const dispatch = useDispatch();
@@ -10,7 +11,7 @@ const Login = () => {
     const {
         user,
         isAuthenticated
-    } = useSelector((state) => state.auth)
+    } = useAuth()
 
     const [
         loginUser,
