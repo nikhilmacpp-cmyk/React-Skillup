@@ -6,7 +6,18 @@ import postSlice from "../features/posts/postsSlice"
 import {apiSlice} from '../features/api/apiSlice'
 import { setupListeners } from "@reduxjs/toolkit/query"
 import authReducer from "../features/auth/authSlice"
+import storage from 'redux-persist/lib/storage'
+import {persistStore,persistReducer} from "redux-persist"
 
+const persistConfig= {
+    key:'root',
+    storage
+}
+const perststedAuthReducer = 
+persistReducer(
+    persistConfig,
+    authReducer
+)
 export const store = configureStore({
     reducer:{
         counter : counterSlice,
@@ -14,10 +25,12 @@ export const store = configureStore({
         users:usersReducer,
         posts:postSlice,
         [apiSlice.reducerPath]:apiSlice.reducer,
-        auth: authReducer
+        auth: perststedAuthReducer
     },
     middleware:
     (getDefaultMiddleware)=>
         getDefaultMiddleware().concat(apiSlice.middleware)
 })
+
+export const persistor = persistStore(store);
 setupListeners(store.dispatch);

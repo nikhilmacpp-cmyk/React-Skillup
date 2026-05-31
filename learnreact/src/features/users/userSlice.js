@@ -1,4 +1,4 @@
-import {createSlice,createAsyncThunk} from '@reduxjs/toolkit';
+import {createSlice,createAsyncThunk,createSelector} from '@reduxjs/toolkit';
 
 const initialState = {
     user:[],
@@ -43,3 +43,18 @@ export const fetchUser=createAsyncThunk(
 })
 
 export default userSlice.reducer
+
+// ----------------------
+// SELECTORS
+// ----------------------
+
+const selectUsers = (state)=>state.users.user;
+export const selectActiveUserLessThan5 = 
+    createSelector(
+        [selectUsers],
+        (users)=>{
+            console.log('filtering users');
+            return users.filter((item)=>item.id<5)
+        }
+    )
+
